@@ -44,7 +44,7 @@ void clear_buf() {
 }
 
 void add_buf(int c) {
-  if (recv_buf_idx == RECV_BUF_SIZE) return; // buffer is full...
+  if (recv_buf_idx == RECV_BUF_SIZE-1) return; // buffer is full...
 
   recv_buf[recv_buf_idx] = (char)c;
   recv_buf_idx ++;  
