@@ -40,9 +40,11 @@ void loop() {
       Serial.print("> ");
     }
     else if (c == 127) {
-      backspace_buf();
       buf[0] = (char)c;
-      Serial.print(buf);
+      if (recv_buf_idx > 0) {
+        Serial.print(buf);
+      }
+      backspace_buf();
     }
     else {
       add_buf(c);
