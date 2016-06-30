@@ -41,6 +41,8 @@ void loop() {
     }
     else if (c == 127) {
       backspace_buf();
+      buf[0] = (char)c;
+      Serial.print(buf);
     }
     else {
       add_buf(c);
