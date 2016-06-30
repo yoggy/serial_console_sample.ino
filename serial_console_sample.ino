@@ -39,6 +39,9 @@ void loop() {
       clear_buf();
       Serial.print("> ");
     }
+    else if (c == 127) {
+      backspace_buf();
+    }
     else {
       add_buf(c);
       buf[0] = (char)c;
@@ -57,6 +60,13 @@ void add_buf(int c) {
 
   recv_buf[recv_buf_idx] = (char)c;
   recv_buf_idx ++;  
+}
+
+void backspace_buf() {
+  if (recv_buf_idx > 0) {
+    recv_buf_idx --;
+    recv_buf[recv_buf_idx] = 0;
+  }
 }
 
 // 
