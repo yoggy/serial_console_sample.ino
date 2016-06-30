@@ -23,17 +23,26 @@ int32_t  cmd_param2 = 0;
 
 void setup() {
   Serial.begin(9600);
+  Serial.println("hello serial_console_sample.ino");
+  Serial.print("> ");
 }
 
 void loop() {
+  char buf[2];
+  buf[1] = 0;
+  
   if (Serial.available() > 0) {
     int c = Serial.read();
     if (c == 10) {  // \n
+      Serial.print("\r\n");
       parse_buf();
       clear_buf();
+      Serial.print("> ");
     }
     else {
       add_buf(c);
+      buf[0] = (char)c;
+      Serial.print(buf);
     }
   }
 }
